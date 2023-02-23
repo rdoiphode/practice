@@ -1,5 +1,5 @@
 <div class="box">
-<h2>User Login</h2>
+<h2 class="H1">User Login</h2>
 <form #LoginForm="ngForm" (ngSubmit)="LoginUser(LoginForm.value)" >
   <div>
   <label for="name">Name </label>
@@ -12,3 +12,11 @@
 </div>
 </form>
 </div>
+
+
+<h2 class="H2">Admin link</h2>
+<ul class="links">
+  <li><a routerLink="admin/login">Login</a></li>
+  <li><a routerLink="admin/list">List</a></li>
+</ul>
+<router-outlet></router-outlet>
