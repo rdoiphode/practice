@@ -1,20 +1,20 @@
-<div class="box">
-<h2 class="H1">User Login</h2>
-<form #LoginForm="ngForm" (ngSubmit)="LoginUser(LoginForm.value)" >
+<div>
+<h2>User Login</h2>
+<form #LoginForm="ngForm" (ngSubmit)="getuserdata(LoginForm.value)" >
   <div>
-  <label for="name">Email </label>
-  <input type="email" name="Email" placeholder="Enter Name" ngModel>
+  <label for="name" >Email </label>
+  <input type="email" name="Email" placeholder="Enter Email" ngModel>
   <br> <br>
   <label for="name">Password </label>
   <input type="password" name="password" placeholder="Enter password" ngModel>
   <br> <br>
-  <button type="button" (click)="onsubmit()">Login</button>
+  <button (click)="login()" ><a routerLink="admin/list">Login</a></button>
 </div>
 </form>
 </div>
 
 
-<!-- <h2 class="H2">Admin link</h2>
+<!-- <h2>Admin link</h2>
 <ul class="links">
   <li><a routerLink="admin/login">Login</a></li>
   <li><a routerLink="admin/list">List</a></li>

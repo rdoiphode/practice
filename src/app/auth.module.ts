@@ -1,23 +1,30 @@
-import { CommonModule } from "@angular/common";
-import { FormsModule, NgModel } from "@angular/forms";
-import { RouterModule } from "@angular/router";
-import { AppComponent } from "./app.component";
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AppComponent} from './app.component';
+import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
+import { StoreModule } from '@ngrx/store';
+import {AuthService} from "./auth.service";
+// import * as fromAuth from './reducers';
+// import {authReducer} from './reducers';
 
 
-@NgModel({
 
-    imports:[
+@NgModule({
+    imports: [
         CommonModule,
-        FormsModule,
-        RouterModule forchild([{Path: '', component: AppComponent}])],
-    declarations: [AppComponent],
-    exports:[AppComponent]
+        ReactiveFormsModule
+    ],
+    declarations: [],
+    exports: []
 })
-
-export class AuthModule{
-    
-}
-
-function forchild(arg0: { Path: string; component: typeof AppComponent; }[]) {
-    throw new Error("Function not implemented.");
+export class AuthModule {
+    static forRoot(): ModuleWithProviders<AuthModule> {
+        return {
+            ngModule: AuthModule,
+            providers: [
+              AuthService,
+            ]
+        }
+    }
 }

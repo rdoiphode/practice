@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { StoreModule } from '@ngrx/store';
-import { HttpClientModule } from '@angular/common/http';
-
+import { AuthModule} from './auth.module';
+import { AuthService } from './auth.service';
+import { HttpClient , HttpClientModule} from '@angular/common/http';
+import { reducers } from './reducers/intex';
 
 
 @NgModule({
@@ -16,12 +18,22 @@ import { HttpClientModule } from '@angular/common/http';
     SubjectsComponent
   ],
   imports: [
+    AuthModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+  //   StoreModule.forRoot(reducers, {
+  //     runtimeChecks : {
+  //         strictStateImmutability: true,
+  //         strictActionImmutability: true,
+  //         strictActionSerializability: true,
+  //         strictStateSerializability:true
+  //     }
+  // }),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

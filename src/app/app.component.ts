@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { noop, tap } from 'rxjs';
 import { login } from './auth.action';
 import { AuthService } from './auth.service';
-import { AppState } from './intex';
+import { AppState } from './reducers/intex';
+import { user } from './user.module';
 
 @Component({
   selector: 'app-root',
@@ -43,9 +44,10 @@ export class AppComponent implements OnInit{
       tap(user=>{
         console.log(user);
 
+
         this.store.dispatch(login({user:user}));
 
-        this.router.navigateByUrl('/admin');
+        this.router.navigateByUrl("admin/list");
       })
     ).subscribe(
       noop,
@@ -53,11 +55,13 @@ export class AppComponent implements OnInit{
     )
   }
 
-  onsubmit(){
-    alert("submitted");
+  getuserdata(data:any){
+    console.warn(data);
+    // this.login(data).subscribe((result)={
+    //   console.log(result);
+    // })
   }
 
-  ngOnInit(): void {
-    
-  }
+
+  ngOnInit(): void {}
 }

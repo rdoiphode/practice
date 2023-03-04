@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { user } from './user.module';
@@ -6,11 +6,13 @@ import { user } from './user.module';
 @Injectable()
 export class AuthService{
 
-    constructor(private http:HttpClient){
+   url="https://jsonplaceholder.typicode.com/todos";
 
-    }
+    constructor(private http:HttpClient){}
+ 
 
-    login(email:string, password:string):Observable<user>{
-        return this.http.post<user>('/api/login',{email,password})
+    login(email:string, password:string): Observable<user> {
+        return this.http.post<user>(this.url, {email,password});
     }
+    
 } 
